@@ -16,8 +16,8 @@ public class UserDAOImpl implements UserDAO{
 	        		ResultSet.CONCUR_READ_ONLY);
 			
 			
-			String sql = "SELECT * from " + DBConstants.USER_TABLE_NAME+
-					     " WHERE "+DBConstants.USER_NAME+" = '"+username+"';";
+			String sql = "SELECT userId, userName, email, userPwd, dateOfBirth from " + DBConstants.USER_TABLE_NAME+
+					     " WHERE userName"+" = '"+username+"';";
 			//Execute the query.
 			System.out.print(sql);
 	        ResultSet result = stmt.executeQuery(sql);
@@ -42,13 +42,14 @@ public class UserDAOImpl implements UserDAO{
 	        		ResultSet.CONCUR_READ_ONLY);
 			
 			
-			String sql = "SELECT * from " + DBConstants.USER_TABLE_NAME+
-					     " WHERE "+DBConstants.USER_NAME+" = '"+username+"';";
+			String sql = "SELECT userId, userName, email, userPwd, dateOfBirth from " + DBConstants.USER_TABLE_NAME+
+					     " WHERE userName = '"+username+"';";
 			//Execute the query.
 			System.out.print(sql);
 	        ResultSet result = stmt.executeQuery(sql);
+	        result.next();
 	        // create a new object and fill the field with the values from the result set.
-	        user  = new User(result.getString(1), result.getString(2), result.getString(3), result.getString(4));
+	        user  = new User(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
 	
 	        stmt.close();
 	        DBUtil.closeDBConnection(conn);
@@ -112,15 +113,15 @@ public class UserDAOImpl implements UserDAO{
 			//userId=Integer.parseInt(result.getString(0));
 			
 			String sql = "UPDATE " + DBConstants.USER_TABLE_NAME+
-					     " SET ('"+"User = '"+
-					     user.getUserName()+"', '"+
-					     "Email = '"+
-					     user.getEmailId()+"', '"+
-					     "password = '"+
-					     user.getUserPwd()+"', '"+
+					     " SET "+"userName = '"+
+					     user.getUserName()+"', "+
+					     "email = '"+
+					     user.getEmailId()+"', "+
+					     "userPwd = '"+
+					     user.getUserPwd()+"', "+
 					     "dateOfBirth = '"+
-					     user.getDateOfBirth()+
-					     "')";
+					     user.dateToString(user.getDateOfBirth())+
+					     "' WHERE userId="+user.getUserId();
 			System.out.println(sql);
 			//Execute the query.
 			int rows = stmt.executeUpdate(sql);
@@ -129,6 +130,37 @@ public class UserDAOImpl implements UserDAO{
 			{
 				flag=true;
 				System.out.print("updated");
+			}			
+            stmt.close();
+            DBUtil.closeDBConnection(conn);
+			
+		} catch (Exception ex) {
+			System.out.println("ERROR: " + ex.getMessage());
+		}
+		return flag;
+	}
+
+	public boolean deleteUserDetails(User user) {
+		boolean flag=false;
+		try {
+			Connection conn = DBUtil.getDBConnection();
+			Statement stmt = conn.createStatement();
+
+			//get the max id from DB and insert max+1 as userId 
+			
+			//String sql1 = "SELECT max(userId) from " + DBConstants.USER_TABLE_NAME+";";
+			//ResultSet result = stmt.executeQuery(sql1);
+			//userId=Integer.parseInt(result.getString(0));
+			
+			String sql = "DELETE FROM Users WHERE userId = "+user.getUserId();
+			System.out.println(sql);
+			//Execute the query.
+			int rows = stmt.executeUpdate(sql);
+			
+			if (rows ==1)
+			{
+				flag=true;
+				System.out.print("deleted");
 			}			
             stmt.close();
             DBUtil.closeDBConnection(conn);
