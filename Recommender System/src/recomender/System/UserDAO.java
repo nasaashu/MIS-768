@@ -9,5 +9,7 @@ public interface UserDAO {
 	public boolean insertUserDetails(User user);
 	
 	public boolean updateUserDetails(User user);
+	
+	public boolean deleteUserDetails(User user);
 
 }

@@ -53,11 +53,24 @@ public class TestConnection {
 		
 		//test insert user
 		/*
-		 * UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String
-		 * pwd,Date dob) User user=new
-		 * User("Sona","hiphop_mis@gmail.com","sona_hip400$","1995-10-21");
+		 * UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
+		 * User user=new User("Sona","hiphop_mis@gmail.com","sona_hip400$","1995-10-21");
 		 * System.out.print(uDAO.insertUserDetails(user));
 		 */
 		
+		//test update user
+		/*
+		 * UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
+		 * User user=new User();
+		 * user=uDAO.getUserDetailsByUsername("Maya"); user.setUserPwd("ohMyGod44@");
+		 * System.out.print(uDAO.updateUserDetails(user));
+		 */
+		
+		//test delete user
+		/*
+		 * UserDAO uDAO; uDAO=new UserDAOImpl(); User user=new User();
+		 * user=uDAO.getUserDetailsByUsername("Seb");
+		 * System.out.print(uDAO.deleteUserDetails(user));
+		 */
 	}
 }

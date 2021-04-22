@@ -13,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class User {
+	private String userId;
 	private String userName;
 	private String emailId;
 	private String userPwd;
@@ -20,14 +21,23 @@ public class User {
 	
 	public User() {}
 	
-	public User(String name, String email, String pwd,Date dob)
+	public User(String id, String name, String email, String pwd,Date dob)
 	{
+		this.userId=id;
 		this.userName=name;
 		this.emailId=email;
 		this.userPwd=pwd;
 		this.dateOfBirth=dob;
 	}
 
+	public User(String id, String name, String email, String pwd, String dob) {
+		this.userId=id;
+		this.userName=name;
+		this.emailId=email;
+		this.userPwd=pwd;
+		this.dateOfBirth=convertToDate(dob);
+	}
+	
 	public User(String name, String email, String pwd, String dob) {
 		this.userName=name;
 		this.emailId=email;
@@ -35,6 +45,14 @@ public class User {
 		this.dateOfBirth=convertToDate(dob);
 	}
 	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
