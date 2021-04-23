@@ -221,4 +221,11 @@ public class User {
 		else
 			return "Strong";
 	}
+	
+	public String toString()
+	{
+		String str=null;
+		str="User Id : "+userId+";\tUser Name : "+userName+";\tPassword : "+userPwd+";\tEmail : "+emailId+";\tDate of birth : "+dateToString(dateOfBirth);
+		return str;
+	}
 }
