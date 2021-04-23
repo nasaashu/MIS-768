@@ -85,7 +85,7 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public int calcAge()
+	public int calcAge(Date dateOfBirth)
 	{
 		int years;
 		int months;

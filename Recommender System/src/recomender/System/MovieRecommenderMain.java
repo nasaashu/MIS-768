@@ -16,7 +16,7 @@ public class MovieRecommenderMain extends Application {
 		//create FXML object
 		FXMLLoader loader=new FXMLLoader();
 		//set location of the object
-		loader.setLocation(getClass().getResource("Login.fxml"));
+		loader.setLocation(getClass().getResource("SignUp.fxml"));
 		//create Parent
 		Parent parent = loader.load();
 		//create scene and assign
