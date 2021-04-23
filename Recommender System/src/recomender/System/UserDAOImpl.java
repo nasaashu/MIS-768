@@ -8,7 +8,9 @@ public class UserDAOImpl implements UserDAO{
 
 	
 	public boolean findUserByUsername(String username) {
+		
 		boolean userFound=false;
+		/*
 		try {
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement(
@@ -19,7 +21,7 @@ public class UserDAOImpl implements UserDAO{
 			String sql = "SELECT userId, userName, email, userPwd, dateOfBirth from " + DBConstants.USER_TABLE_NAME+
 					     " WHERE userName"+" = '"+username+"';";
 			//Execute the query.
-			System.out.print(sql);
+			System.out.println(sql);
 	        ResultSet result = stmt.executeQuery(sql);
 	        if(result.next())
 	        	userFound=true;
@@ -30,11 +32,20 @@ public class UserDAOImpl implements UserDAO{
 		catch (Exception ex) {
 				System.out.println("ERROR: " + ex.getMessage());
 			}
+			*/
+		User user = getUserDetailsByUsername(username);
+		if(user == null)
+		{
+			userFound=false;
+		}
+		else
+			userFound=true;
+		System.out.println("user found : "+userFound +"\n "+ user);
 		return userFound;
 	}
 	
 	public User getUserDetailsByUsername(String username) {
-		User user = new User();
+		User user = null;
 		try {
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement(
@@ -45,12 +56,12 @@ public class UserDAOImpl implements UserDAO{
 			String sql = "SELECT userId, userName, email, userPwd, dateOfBirth from " + DBConstants.USER_TABLE_NAME+
 					     " WHERE userName = '"+username+"';";
 			//Execute the query.
-			System.out.print(sql);
+			System.out.println(sql);
 	        ResultSet result = stmt.executeQuery(sql);
-	        result.next();
-	        // create a new object and fill the field with the values from the result set.
-	        user  = new User(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
-	
+	        if(result.next())
+		        // create a new object and fill the field with the values from the result set.
+		        user  = new User(result.getString(1), result.getString(2), result.getString(3), result.getString(4), result.getString(5));
+		
 	        stmt.close();
 	        DBUtil.closeDBConnection(conn);
 	
@@ -129,7 +140,7 @@ public class UserDAOImpl implements UserDAO{
 			if (rows ==1)
 			{
 				flag=true;
-				System.out.print("updated");
+				System.out.println("updated");
 			}			
             stmt.close();
             DBUtil.closeDBConnection(conn);
