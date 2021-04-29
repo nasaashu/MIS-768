@@ -6,14 +6,18 @@
 
 package RecommenderSystem;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.apache.mahout.cf.taste.model.DataModel;
+
+import javafx.scene.control.Label;
+
 
 public class TestConnection {
 	public static void main(String[] args) {
-		
 		
 		//test for SQL connection
 		
@@ -44,12 +48,12 @@ public class TestConnection {
 		 */
 		
 		//test for getting all movies
-		/*
-		 * MovieDAO mDAO; mDAO=new MovieDAOImpl(); ArrayList<Movie>
-		 * movie_list=mDAO.getMovieListAll(); for(int i=0;i<movie_list.size();i++)
-		 * System.out.println(movie_list.get(i).getMovieName());
-		 * System.out.println("Size:"+String.valueOf(movie_list.size()));
-		 */
+		
+//		  MovieDAO mDAO; mDAO=new MovieDAOImpl(); ArrayList<Movie>
+//		  movie_list=mDAO.getMovieListAll(); for(int i=0;i<movie_list.size();i++)
+//		  System.out.println(movie_list.get(i).getMovieName());
+//		  System.out.println("Size:"+String.valueOf(movie_list.size()));
+		 
 		
 		//test insert user
 		/*
@@ -67,10 +71,26 @@ public class TestConnection {
 		 */
 		
 		//test delete user
+		
 		/*
 		 * UserDAO uDAO; uDAO=new UserDAOImpl(); User user=new User();
 		 * user=uDAO.getUserDetailsByUsername("Seb");
 		 * System.out.print(uDAO.deleteUserDetails(user));
 		 */
+		
+		int userID=5;
+		MovieDAO mDAO = null;
+		Recommender recommender = new Recommender();
+	    ArrayList<Integer> movieIDList=new ArrayList<Integer>();
+	    movieIDList=recommender.getRecommededMovies(userID);
+	    ArrayList<Movie> movie_list=mDAO.getMovieDetailsByIDs(movieIDList);
+	    for(int i=0;i<movie_list.size();i++)
+	    {
+	    	
+	    	//Label label=new Label(movie_list.get(i).getMovieName());
+	    	//vbox.getChildren().add(label);
+	    	System.out.println(movie_list.get(i).getMovieName());
+	    }
+		
 	}
 }
