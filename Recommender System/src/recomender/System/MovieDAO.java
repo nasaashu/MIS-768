@@ -6,5 +6,6 @@ public interface MovieDAO {
 
 	public ArrayList<Movie> getMovieListAll();
 	public Movie getMovieDetailsByName(String movieName);
+	public ArrayList<Movie> getMovieDetailsByIDs(ArrayList<Integer> movieIds);
 	
 }
