@@ -10,29 +10,7 @@ public class UserDAOImpl implements UserDAO{
 	public boolean findUserByUsername(String username) {
 		
 		boolean userFound=false;
-		/*
-		try {
-			Connection conn = DBUtil.getDBConnection();
-			Statement stmt = conn.createStatement(
-	        		ResultSet.TYPE_SCROLL_INSENSITIVE,
-	        		ResultSet.CONCUR_READ_ONLY);
-			
-			
-			String sql = "SELECT userId, userName, email, userPwd, dateOfBirth from " + DBConstants.USER_TABLE_NAME+
-					     " WHERE userName"+" = '"+username+"';";
-			//Execute the query.
-			System.out.println(sql);
-	        ResultSet result = stmt.executeQuery(sql);
-	        if(result.next())
-	        	userFound=true;
-	        stmt.close();
-	        DBUtil.closeDBConnection(conn);
-	
-			} 
-		catch (Exception ex) {
-				System.out.println("ERROR: " + ex.getMessage());
-			}
-			*/
+		
 		User user = getUserDetailsByUsername(username);
 		if(user == null)
 		{
@@ -79,12 +57,6 @@ public class UserDAOImpl implements UserDAO{
 		try {
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement();
-
-			//get the max id from DB and insert max+1 as userId 
-			
-			//String sql1 = "SELECT max(userId) from " + DBConstants.USER_TABLE_NAME+";";
-			//ResultSet result = stmt.executeQuery(sql1);
-			//userId=Integer.parseInt(result.getString(0));
 			
 			String sql = "INSERT INTO `Users` (`userId`, `userName`, `userPwd`, `dateOfBirth`, `email`) VALUES (NULL, '"+
 					     user.getUserName()+"', '"+
@@ -116,12 +88,6 @@ public class UserDAOImpl implements UserDAO{
 		try {
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement();
-
-			//get the max id from DB and insert max+1 as userId 
-			
-			//String sql1 = "SELECT max(userId) from " + DBConstants.USER_TABLE_NAME+";";
-			//ResultSet result = stmt.executeQuery(sql1);
-			//userId=Integer.parseInt(result.getString(0));
 			
 			String sql = "UPDATE " + DBConstants.USER_TABLE_NAME+
 					     " SET "+"userName = '"+
@@ -156,12 +122,6 @@ public class UserDAOImpl implements UserDAO{
 		try {
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement();
-
-			//get the max id from DB and insert max+1 as userId 
-			
-			//String sql1 = "SELECT max(userId) from " + DBConstants.USER_TABLE_NAME+";";
-			//ResultSet result = stmt.executeQuery(sql1);
-			//userId=Integer.parseInt(result.getString(0));
 			
 			String sql = "DELETE FROM Users WHERE userId = "+user.getUserId();
 			System.out.println(sql);

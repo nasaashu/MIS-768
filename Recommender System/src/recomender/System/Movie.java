@@ -1,6 +1,7 @@
 package RecommenderSystem;
 
 public class Movie {
+	private int id;
 	private String movieName;
 	private String description;
 	private String year;
@@ -11,14 +12,24 @@ public class Movie {
 	public Movie() {}
 
 	
-	public Movie(String movieName, String description, String year, String genre, String language, String actors) {
+	public Movie(String id,String movieName, String description, String year, String genre, String language, String actors) {
 		super();
+		this.id=Integer.parseInt(id);
 		this.movieName = movieName;
 		this.description = description;
 		this.year = year;
 		this.genre = genre;
 		this.language = language;
 		this.actors = actors;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMovieName() {

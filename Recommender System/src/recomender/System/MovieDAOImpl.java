@@ -41,8 +41,9 @@ public class MovieDAOImpl implements MovieDAO {
 			return movieList;
 	}
 	
-	public Movie getMovieDetailsByName(String movieName)
+	public ArrayList<Movie> getMovieDetailsByName(String movieName)
 	{
+		ArrayList<Movie> movieList=new ArrayList<Movie>();
 		Movie movie = null;
 		try {
 
@@ -51,7 +52,7 @@ public class MovieDAOImpl implements MovieDAO {
 	        		ResultSet.TYPE_SCROLL_INSENSITIVE,
 	        		ResultSet.CONCUR_READ_ONLY);
 			
-			String sql = "select f.title as movie_name,f.description, f.release_year,fcc.name as genre, l.name as language,\r\n"
+			String sql = "select f.film_id,f.title as movie_name,f.description, f.release_year,fcc.name as genre, l.name as language,\r\n"
 					+ "GROUP_CONCAT(concat(a.first_name,\" \",a.last_name)) as actors\r\n"
 					+ "from film f\r\n"
 					+ "join film_actor fa\r\n"
@@ -64,23 +65,26 @@ public class MovieDAOImpl implements MovieDAO {
 					+ "  join category c\r\n"
 					+ "  on fc.category_id = c.category_id) fcc\r\n"
 					+ "  on fcc.film_id=f.film_id\r\n"
-					+" WHERE f.title='"+ movieName +"';";
+					+" WHERE f.title  like '%"+ movieName +"%' group by f.film_id;;";
 			
 			//Execute the query.
 			System.out.print(sql);
 	        ResultSet result = stmt.executeQuery(sql);
-	        result.next();
+	        while (result.next())
+	        {
 	        // create a new object and fill the field with the values from the result set.
-	        movie  = new Movie(result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6));
-		
+	        movie  = new Movie(result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6),result.getString(7));
+	        movieList.add(movie);
+	        System.out.println(movie.getMovieName());
+	        }
 	        stmt.close();
 	        DBUtil.closeDBConnection(conn);
-	
+	        
 			} 
 		catch (Exception ex) {
 				System.out.println("ERROR: " + ex.getMessage());
 			}
-		return movie;
+		return movieList;
 	}
 
 	public ArrayList<Movie> getMovieDetailsByIDs(ArrayList<Integer> movieIds) {
@@ -99,7 +103,7 @@ public class MovieDAOImpl implements MovieDAO {
 			}
 			ids=ids.substring(0, ids.length() - 1);
 			//System.out.println("ids:"+ids);
-			String sql = "select f.title as movie_name,f.description, f.release_year,fcc.name as genre, l.name as language,\r\n"
+			String sql = "select f.film_id,f.title as movie_name,f.description, f.release_year,fcc.name as genre, l.name as language,\r\n"
 					+ "GROUP_CONCAT(concat(a.first_name,\" \",a.last_name)) as actors\r\n"
 					+ "from film f\r\n"
 					+ "join film_actor fa\r\n"
@@ -120,8 +124,8 @@ public class MovieDAOImpl implements MovieDAO {
 	        while(result.next())
 	        {
 	        // create a new object and fill the field with the values from the result set.
-	        movie  = new Movie();
-	        movie.setMovieName(result.getString(1));
+	        	movie  = new Movie(result.getString(1),result.getString(2),result.getString(3),result.getString(4),result.getString(5),result.getString(6),result.getString(7));
+	        //movie.setMovieName(result.getString(1));
 	        //add movie to movielist
 	        movieList.add(movie);
 	        

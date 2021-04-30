@@ -60,8 +60,27 @@ public class MenuController {
     }
 
     @FXML
-    void rateMovieButton_OnClick(ActionEvent event) {
+    void rateMovieButton_OnClick(ActionEvent event) throws IOException {
+    	// Instantiate the FXMLLoader object for loading the UI 
+    	FXMLLoader loader=new FXMLLoader();
+    	
+    	// specify the file location for the FXML file for the next window
+    	loader.setLocation(getClass().getResource("MovieList.fxml"));
+		Parent parent=loader.load();
+		Scene scene = new Scene(parent);
 
+    	// access the controller class for the next window via the FXML loader
+    	MovieListController controller=loader.getController();
+    	controller.initData(user);
+
+    	// get the current stage, using the ActionEvent object
+    	Stage stage= (Stage)((Node)event.getSource()).getScene().getWindow();
+    	// change the title
+    	stage.setTitle("Login");
+    	// set the new scene to the stage
+    	stage.setScene(scene);
+    	// show the stage
+    	stage.show();
     }
 
     @FXML
@@ -99,7 +118,31 @@ public class MenuController {
     	
     	// access the controller class for the next window via the FXML loader
     	MovieRecommenderController controller=loader.getController();
-    	controller.initialize(user);
+    	controller.initData(user);
+
+    	// get the current stage, using the ActionEvent object
+    	Stage stage= (Stage)((Node)event.getSource()).getScene().getWindow();
+    	// change the title
+    	stage.setTitle("Login");
+    	// set the new scene to the stage
+    	stage.setScene(scene);
+    	// show the stage
+    	stage.show();
+    }
+    
+    @FXML
+    void menuButton_OnClick(ActionEvent event) throws IOException {
+    	// Instantiate the FXMLLoader object for loading the UI 
+    	FXMLLoader loader=new FXMLLoader();
+    	
+    	// specify the file location for the FXML file for the next window
+    	loader.setLocation(getClass().getResource("Menu.fxml"));
+		Parent parent=loader.load();
+		Scene scene = new Scene(parent);
+    	
+    	// access the controller class for the next window via the FXML loader
+    	MovieRecommenderController controller=loader.getController();
+    	controller.initData(user);
 
     	// get the current stage, using the ActionEvent object
     	Stage stage= (Stage)((Node)event.getSource()).getScene().getWindow();
