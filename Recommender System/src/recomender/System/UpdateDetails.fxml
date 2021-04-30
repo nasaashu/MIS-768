@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RecommenderSystem.UpdateDetailsController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="493.0" style="-fx-background-color: black;">
+         <children>
+            <Label layoutX="55.0" layoutY="21.0" text="Update User Details" textFill="#025dd6">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userNameTextField" layoutX="55.0" layoutY="76.0" prefHeight="31.0" prefWidth="266.0" promptText="User Name" AnchorPane.rightAnchor="172.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="emailTextField" layoutX="52.0" layoutY="287.0" prefHeight="31.0" prefWidth="266.0" promptText="Email ID">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <DatePicker fx:id="dobPicker" layoutX="53.0" layoutY="234.0" prefHeight="31.0" prefWidth="180.0" promptText="Date of Birth" />
+            <Button fx:id="updateButton" layoutX="278.0" layoutY="358.0" mnemonicParsing="false" onAction="#updateButton_OnClick" style="-fx-background-color: #025dd6;" text="Update" textFill="#eceaf0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="pwdTextField" layoutX="55.0" layoutY="132.0" prefHeight="31.0" prefWidth="266.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="confirmPwdTextField" layoutX="52.0" layoutY="183.0" prefHeight="31.0" prefWidth="266.0" promptText="Confirm Password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="deleteButton" layoutX="56.0" layoutY="358.0" mnemonicParsing="false" onAction="#deleteButton_OnClick" prefHeight="39.0" prefWidth="149.0" style="-fx-background-color: #025dd6;" text="Delete Account" textFill="#faf4f4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label fx:id="userNameLabel" layoutX="346.0" layoutY="83.0" text="Label" />
+            <Label fx:id="pwdLabel" layoutX="346.0" layoutY="190.0" text="Label" />
+            <Label fx:id="emailLabel" layoutX="346.0" layoutY="294.0" text="Label" />
+            <Label fx:id="dobLabel" layoutX="346.0" layoutY="241.0" text="Label" />
+            <Button fx:id="menuButton" layoutX="415.0" layoutY="26.0" mnemonicParsing="false" onAction="#menuButton_OnClick" style="-fx-background-color: #025dd6;" text="Menu" textFill="#eceaf0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
