@@ -17,11 +17,18 @@ public class MovieRecommenderController implements Initializable {
 
     @FXML
     private Button menuButton;
+    
+    private int userID;
+    
+    public void initData(User user)
+    {
+    	userID=Integer.parseInt(user.getUserId());
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		int userID=5;//for testing
+		//userID=5;//for testing
 		
 		Recommender recommender = new Recommender();
 	    ArrayList<Integer> movieIDList=new ArrayList<Integer>();

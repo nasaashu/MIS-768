@@ -21,25 +21,31 @@ public class TestConnection {
 		
 		//test for SQL connection
 		
-		/*
-		 * final String DB_URL="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3406585";
-		 * final String USER_NAME="sql3406585"; final String PASSWORD="mA7zkufyN5";
-		 * 
-		 * try { Connection conn=DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
-		 * System.out.println("DB connection established"); //System.out.print("in");
-		 * //create statement object Statement stmt=conn.createStatement();
-		 * 
-		 * //write SQL statement String sql="SELECT * FROM Users";
-		 * 
-		 * //execute ResultSet result=stmt.executeQuery(sql);
-		 * 
-		 * while(result.next()) {
-		 * System.out.print("User Name:"+result.getString("userName"));
-		 * System.out.println("\temail:"+result.getString("email")); }
-		 * 
-		 * conn.close(); System.out.println("DB connection closed"); } catch(Exception
-		 * e) { System.out.print("ERROR:"+e.getMessage()); }
-		 */
+		
+//		  final String DB_URL="jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3406585";
+//		  final String USER_NAME="sql3406585"; final String PASSWORD="mA7zkufyN5";
+//		  
+//		  try { Connection conn=DriverManager.getConnection(DB_URL,USER_NAME,PASSWORD);
+//		  System.out.println("DB connection established"); //System.out.print("in");
+//		  //create statement object 
+//		  Statement stmt=conn.createStatement();
+//		  
+//		  //write SQL statement 
+//		  String sql="SELECT * FROM Users";
+//		  
+//		  //execute 
+//		  ResultSet result=stmt.executeQuery(sql);
+//		  
+//		  while(result.next()) {
+//		  System.out.print("User Name:"+result.getString("userName"));
+//		  System.out.println("\temail:"+result.getString("email")); }
+//		  
+//		  conn.close(); 
+//		  System.out.println("DB connection closed");
+//		  } 
+//		  catch(Exception e) 
+//		  { System.out.print("ERROR:"+e.getMessage()); }
+		 
 		
 		//test for getting movie details by movie name
 		/*
@@ -56,27 +62,30 @@ public class TestConnection {
 		 
 		
 		//test insert user
-		/*
-		 * UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
-		 * User user=new User("Sona","hiphop_mis@gmail.com","sona_hip400$","1995-10-21");
-		 * System.out.print(uDAO.insertUserDetails(user));
-		 */
+		
+//		  UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
+//		  User user=new User("Sona","hiphop_mis@gmail.com","sona_hip400$","1995-10-21");
+//		  System.out.print(uDAO.insertUserDetails(user));
+//		 
 		
 		//test update user
-		/*
-		 * UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
-		 * User user=new User();
-		 * user=uDAO.getUserDetailsByUsername("Maya"); user.setUserPwd("ohMyGod44@");
-		 * System.out.print(uDAO.updateUserDetails(user));
-		 */
+//		
+//		  UserDAO uDAO; uDAO=new UserDAOImpl();//(String name, String email, String pwd,Date dob) 
+//		  User user=new User();
+//		  user=uDAO.getUserDetailsByUsername("Maya"); 
+//		  user.setUserPwd("ohMyGod44@");
+//		  System.out.print(uDAO.updateUserDetails(user));
+		 
 		
 		//test delete user
 		
-		/*
-		 * UserDAO uDAO; uDAO=new UserDAOImpl(); User user=new User();
-		 * user=uDAO.getUserDetailsByUsername("Seb");
-		 * System.out.print(uDAO.deleteUserDetails(user));
-		 */
+//		
+//		  UserDAO uDAO; 
+//		  uDAO=new UserDAOImpl(); 
+//		  User user=new User();
+//		  user=uDAO.getUserDetailsByUsername("Seb");
+//		  System.out.print(uDAO.deleteUserDetails(user));
+		 
 		
 		int userID=5;
 		MovieDAO mDAO = null;
@@ -86,9 +95,6 @@ public class TestConnection {
 	    ArrayList<Movie> movie_list=mDAO.getMovieDetailsByIDs(movieIDList);
 	    for(int i=0;i<movie_list.size();i++)
 	    {
-	    	
-	    	//Label label=new Label(movie_list.get(i).getMovieName());
-	    	//vbox.getChildren().add(label);
 	    	System.out.println(movie_list.get(i).getMovieName());
 	    }
 		
