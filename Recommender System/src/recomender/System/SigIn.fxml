@@ -17,6 +17,12 @@
                <font>
                   <Font size="17.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets top="150.0" />
+               </HBox.margin>
             </Button>
          </children>
       </HBox>

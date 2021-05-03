@@ -1,12 +1,14 @@
 /* 
-    Created on : Feb 22, 2020, 2:39:34 PM
-    Author     : Admin
+    Created on : 05-03-2021
+    Author     : Group 3 
 */
 .parent{
+	-fx-background-image:url('Movies.jpg');
     -fx-background-color: transparent;
 }
 .pane{
    -fx-background-color: #2196f3; 
+   
 }
 .trans-btn-white-border{
     -fx-background-color: transparent;
@@ -21,9 +23,11 @@
 }
 .blue-panel{
     -fx-background-color: #151928;
+    -fx-background-image:url('tenor.gif');
 }
 .tf_box{
-    -fx-background-color: transparent;
+    -fx-background-color: BLACK;
+    -fx-text-fill: #2196f3;
     -fx-border-color: #DEDEE4;
     -fx-border-width: 0px 0px 1px 0px;
 }
@@ -33,6 +37,14 @@
 .blue-btn{
     -fx-background-color: #2196f3;
     -fx-background-radius: 5px;
-    -fx-text-fill: #fffff;
+    -fx-text-fill: white;
+}
+.description-panel{
+    -fx-background-color: #151928;
+    -fx-background-image:url('tenor.gif');
 }
 
+.image-panel{
+    -fx-background-color: #151928;
+    -fx-image:url('cinegraph-hdr.gif');
+}
