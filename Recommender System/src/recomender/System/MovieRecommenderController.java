@@ -46,6 +46,7 @@ public class MovieRecommenderController{
 	    {
 	    	
 	    	Hyperlink hypLink=new Hyperlink(movie_list.get(i).getMovieName());
+	    	Movie movie=movie_list.get(i);
 	    	hypLink.setOnAction(new EventHandler<ActionEvent>() {
 
 	    	    public void handle(ActionEvent e) {
@@ -59,7 +60,8 @@ public class MovieRecommenderController{
 	    			Scene scene = new Scene(parent);
 	    	    	
 	    	    	// access the controller class for the next window via the FXML loader
-	    	    	SignUpController controller=loader.getController();
+	    	    	MovieDetailController controller=loader.getController();
+	    	    	controller.initData(u, movie);;
 
 	    	    	// get the current stage, using the ActionEvent object
 	    	    	Stage stage= (Stage)((Node)e.getSource()).getScene().getWindow();

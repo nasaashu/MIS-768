@@ -162,15 +162,15 @@ public class SignUpController {
 			        	    	FXMLLoader loader=new FXMLLoader();
 			        	    	
 			        	    	// specify the file location for the FXML file for the next window
-			        	    	loader.setLocation(getClass().getResource("Menu.fxml"));
+			        	    	loader.setLocation(getClass().getResource("Login.fxml"));
 			        			Parent parent=loader.load();
 			        			Scene scene = new Scene(parent);
 			        	    	
 			        	    	// access the controller class for the next window via the FXML loader
-			        	    	MenuController controller=loader.getController();
+			        	    	LoginController controller=loader.getController();
 			        	    	// call the method in the controller class for the next window
 			        	    	// so that the string can be passed
-			        	    	controller.initData(user);
+			        	    	//controller.initData(user);
 
 			        	    	// get the current stage, using the ActionEvent object
 			        	    	Stage stage= (Stage)((Node)e.getSource()).getScene().getWindow();

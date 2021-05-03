@@ -19,6 +19,10 @@ public class User {
 	private String userPwd;
 	private Date dateOfBirth;
 	
+	public User(String id) {
+		this.userId=id;
+	}
+	
 	public User() {}
 	
 	public User(String id, String name, String email, String pwd,Date dob)

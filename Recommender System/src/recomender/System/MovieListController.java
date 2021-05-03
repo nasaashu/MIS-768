@@ -1,5 +1,6 @@
 package RecommenderSystem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.event.ActionEvent;
@@ -45,12 +46,39 @@ public class MovieListController {
 	    for(int i=0;i<movie_list.size();i++) 
 	    {
 	    	Hyperlink hypLink = new Hyperlink(movie_list.get(i).getMovieName());
-    		int id = movie_list.get(i).getId();
+    		//int id = movie_list.get(i).getId();
+	    	Movie movie = movie_list.get(i);
 	    	
     		//on click event for the hyperlink - should open movie details page for corresponding movie ID
 	    	hypLink.setOnAction(new EventHandler<ActionEvent>() {
 	    	    public void handle(ActionEvent e) {
-	    	    	getMovieDetailsUI(e,id);
+	    	    	System.out.println("initt");
+	    	    	//getMovieDetailsUI(e,movie);
+	    	    	try {
+	    	    		System.out.println();
+	    	    	// Instantiate the FXMLLoader object for loading the UI 
+	    	    	FXMLLoader loader=new FXMLLoader();
+	    	    	
+	    	    	// specify the file location for the FXML file for the next window
+	    	    	loader.setLocation(getClass().getResource("MovieDetails.fxml"));
+	    			Parent parent=loader.load();
+	    			Scene scene = new Scene(parent);
+	    	    	
+	    	    	// access the controller class for the next window via the FXML loader
+	    	    	MovieDetailController controller=loader.getController();
+	    	    	controller.initData(user, movie);
+	    	    	
+	    	    	System.out.println("after");
+	    	    	// get the current stage, using the ActionEvent object
+	    	    	Stage stage= (Stage)((Node)e.getSource()).getScene().getWindow();
+	    	    	// change the title
+	    	    	stage.setTitle("Movie Details");
+	    	    	// set the new scene to the stage
+	    	    	stage.setScene(scene);
+	    	    	// show the stage
+	    	    	stage.show();
+	    	    	}
+	    	    	catch(Exception ex) {}
 	    	    }
 	    	});
 	    	//add the control to the vbox dynamically
@@ -77,12 +105,14 @@ public class MovieListController {
 	    	for(int i=0;i<movieList.size();i++)
 	    	{
 	    	Hyperlink hypLink = new Hyperlink(movieList.get(i).getMovieName());
-    		int id = movieList.get(i).getId();
+    		//int id = movieList.get(i).getId();
+	    	Movie movie = movieList.get(i);
 	    	
     		//on click event for the hyperlink - should open movie details page for corresponding movie ID
     		hypLink.setOnAction(new EventHandler<ActionEvent>() {
 	    	    public void handle(ActionEvent e) {
-	    	    	getMovieDetailsUI(e,id);
+	    	    	System.out.println("seaarchh");
+	    	    	getMovieDetailsUI(e,movie);
 	    	    }
 	    	    
 	    	});
@@ -113,11 +143,13 @@ public class MovieListController {
 	    //create hyperlinks with the movie name as the text for all the movies in the list
 	    for(int i=0;i<movie_list.size();i++) {
 	    	Hyperlink hypLink = new Hyperlink(movie_list.get(i).getMovieName());
-	    	int id=movie_list.get(i).getId();
+	    	//int id=movie_list.get(i).getId();
+	    	Movie movie = movie_list.get(i);
+	    	
 	    	hypLink.setOnAction(new EventHandler<ActionEvent>() {
 
 	    	    public void handle(ActionEvent e) {
-	    	    	getMovieDetailsUI(e, id);
+	    	    	getMovieDetailsUI(e, movie);
 	    	    }
 	    	});
 	    	//add the control to the vbox dynamically
@@ -125,8 +157,35 @@ public class MovieListController {
 	    }
     }
     
-    public void getMovieDetailsUI(ActionEvent e, int id) {
+    public void menuButton_OnClick(ActionEvent e) throws IOException {
+//change page to menu
+    	
+    	// Instantiate the FXMLLoader object for loading the UI 
+    	FXMLLoader loader=new FXMLLoader();
+    	
+    	// specify the file location for the FXML file for the next window
+    	loader.setLocation(getClass().getResource("Menu.fxml"));
+		Parent parent=loader.load();
+		Scene scene = new Scene(parent);
+    	
+    	// access the controller class for the next window via the FXML loader
+    	MenuController controller=loader.getController();
+
+    	controller.initData(user);
+    	
+    	// get the current stage, using the ActionEvent object
+    	Stage stage= (Stage)((Node)e.getSource()).getScene().getWindow();
+    	// change the title
+    	stage.setTitle("Login");
+    	// set the new scene to the stage
+    	stage.setScene(scene);
+    	// show the stage
+    	stage.show();
+    }
+    
+    public void getMovieDetailsUI(ActionEvent e, Movie movie) {
     	try {
+    		System.out.println();
     	// Instantiate the FXMLLoader object for loading the UI 
     	FXMLLoader loader=new FXMLLoader();
     	
@@ -136,8 +195,9 @@ public class MovieListController {
 		Scene scene = new Scene(parent);
     	
     	// access the controller class for the next window via the FXML loader
-    	SignUpController controller=loader.getController();
-
+    	MovieDetailController controller=loader.getController();
+    	controller.initData(user, movie);
+    	System.out.println("after");
     	// get the current stage, using the ActionEvent object
     	Stage stage= (Stage)((Node)e.getSource()).getScene().getWindow();
     	// change the title

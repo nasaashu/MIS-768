@@ -58,7 +58,7 @@ public class UserDAOImpl implements UserDAO{
 			Connection conn = DBUtil.getDBConnection();
 			Statement stmt = conn.createStatement();
 			
-			String sql = "INSERT INTO `Users` (`userId`, `userName`, `userPwd`, `dateOfBirth`, `email`) VALUES (NULL, '"+
+			String sql = "INSERT INTO `Users` (`userName`, `userPwd`, `dateOfBirth`, `email`) VALUES ('"+
 					     user.getUserName()+"', '"+
 					     user.getUserPwd()+"', '"+	
 					     user.dateToString(user.getDateOfBirth())+"', '"+			     
